@@ -1,5 +1,7 @@
-import io.trueautomation.client.driver.TrueAutomationDriver;
 
+import io.trueautomation.client.driver.TrueAutomationDriver;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -11,7 +13,6 @@ import pages.HomePage;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static java.lang.Thread.sleep;
 import static org.testng.Assert.assertTrue;
 
 public class FlightStatusToggerTest {
@@ -33,15 +34,15 @@ public class FlightStatusToggerTest {
     }
 
     @Test
-    public void test()throws InterruptedException {
+    public void flightStatusTest() {
         homePage.goToHomePage();
         homePage.goToFlightStatusToggler();
+        homePage.focusFlightStatus();
         assertTrue(homePage.isFlightNumberFieldAvailable());
         assertTrue(homePage.isDatesDropdownAvailable());
         assertTrue(homePage.isFromInputAvailable());
         assertTrue(homePage.isToInputAvailable());
         assertTrue(homePage.isSearchButtonAvailable());
-        sleep(3000);
     }
 
     @AfterTest

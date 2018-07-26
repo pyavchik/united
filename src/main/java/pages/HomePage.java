@@ -2,6 +2,7 @@ package pages;
 
 import io.trueautomation.client.driver.FindByTA;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -14,6 +15,7 @@ public class HomePage {
     private WebElement flightStatusToggler;
 
     @FindByTA(taName="ta:homePage:flightNumberField", id = "flightStatusModel.flightNumber")
+
     private WebElement flightNumber;
 
     @FindByTA(taName="ta:homePage:datesDropdown", id = "datesDropdown")
@@ -39,6 +41,12 @@ public class HomePage {
 
     public void goToFlightStatusToggler(){
         flightStatusToggler.click();
+    }
+
+    public void focusFlightStatus(){
+        JavascriptExecutor jse;
+        jse = (JavascriptExecutor) driver;
+        jse.executeScript("window.scrollTo(0,530)");
     }
 
     public boolean isFlightNumberFieldAvailable(){
